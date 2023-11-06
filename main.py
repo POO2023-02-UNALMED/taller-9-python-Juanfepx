@@ -8,18 +8,28 @@ root.geometry("302x259")
 
 digito = "" #Variable concatenadora de digitos
 num_pantalla = StringVar() #Variable para la muestra en el display
+operacion = []
+operadores = []
 
 def update_num(digitos): #Funcion para agregar
-    global digito
-    digito = digito +  str(digitos)
-    num_pantalla.set(digito)
+
+    operacion.append(digitos)
+    if digitos == "+" or digitos == "-" or digitos == "*" or digitos == "/":
+        operadores.append(digitos)
+    if len(operadores)<=1:
+        global digito
+        digito = digito +  str(digitos)
+        num_pantalla.set(digito)
+
+
+
+
 
 def result(): #Funcion para calcular la operacion
     global digito
     total = str(eval(digito))
     num_pantalla.set(total)
     digito = ""
-
 
 # Configuración pantalla de salida
 
